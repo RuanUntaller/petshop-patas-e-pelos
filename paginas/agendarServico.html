@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Serviço</title>
+</head>
+<body>
+    <h2>Agendar Banho e Tosa</h2>
+
+    <form id="form_agendamento" onsubmit="salvarAgendamento(event)" action="confirmacao.html">
+
+        <label>Nome pet:</label><br>
+        <input type="text" id="agendar_pet"><br>
+
+        <select id="agendar_servico" onchange="verificarConsulta()">
+            <option value="Banho">Banho</option>
+            <option value="Tosa">Tosa</option>
+            <option value="banhoTosa">Banho e Tosa</option>
+            <option value="Consulta">Consulta</option>
+        </select><br>
+
+        <label>Espécie do Pet:</label><br>
+        <input type="text" id="agendar_especie" placeholder="Ex: Cachorro"><br>
+
+        <label>Telefone do Dono:</label><br>
+        <input type="tel" id="agendar_telefone" placeholder="(00) 00000-0000"><br>
+
+        <label>Nome do Dono:</label><br>
+        <input type="text" id="agendar_dono" placeholder="Nome completo"><br>
+
+
+
+        <div id="areaSintomas" style="display: none;"><br>
+            <label>Descreva os Sintomas</label><br>
+            <textarea id="sintomas"></textarea><br>
+        </div><br>
+        
+
+        <label>Calcular preço</label><br>
+        <input type="text" id="precoEstimado" readonly><br>
+        <button type="button" onclick="calcularPreco()">Calcular Preço</button><br>
+
+        <label>Data:</label><br>
+        <input type="date" id="agendar_data"><br>
+
+        <label>Horário:</label><br>
+        <input type="time" id="agendar_hora"><br>
+
+        <label>Observações:</label><br>
+        <textarea name="observacoes" id="agendar_obs" cols="30" rows="10"></textarea>
+        
+        <button type="submit">Enviar Agendamento</button>
+        
+
+        
+    </form><br>
+
+
+    <a href="../index.html">Voltar</a><br>
+
+    <script src="../js/agendamento.js"></script><br>
+</body>
+</html>
