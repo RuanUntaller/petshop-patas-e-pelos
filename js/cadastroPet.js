@@ -11,26 +11,6 @@ function validarTelefone(event){
     }
 }
 
-function cadastro_pet(event){
-    event.preventDefault();
-    let pet_cadastrado = {
-        nome: document.getElementById('nome_pet').value,
-        especie_pet: document.getElementById('especie_pet').value,
-        raca: document.getElementById('raca_pet').value,
-        dono_pet: document.getElementById('dono_pet').value,
-        telefone_dono: document.getElementById('telefone_dono').value,
-
-    }
-
-    let dadosPet = JSON.stringify(pet_cadastrado);
-    localStorage.setItem('pet_cadastrado', dadosPet);
-    localStorage.getItem('pet_cadastrado');
-    JSON.parse(dadosPet);
-
-    alert('Pet ' + pet_cadastrado.nome + ' salvo na memória!')
-}
-
-
 function limparCamposEndereco(){
     document.getElementById('rua_dono').value = ""
     document.getElementById('bairro_dono').value = ""
@@ -118,6 +98,38 @@ document.getElementById('select_cidade_dono').addEventListener('change', functio
     document.getElementById('cidade_dono').value = cidadeEscolhida;
 
 });
+
+
+const formulario = document.getElementById("form_cadastro_pet");
+formulario.addEventListener('submit', async function (evento) {
+    evento.preventDefault()
+
+    const novoPet = {
+        nome_pet: document.getElementById('nome_pet').value,
+        especie_pet: document.getElementById('especie_pet').value,
+        raca_pet: document.getElementById('raca_pet').value,
+        dono_pet: document.getElementById('dono_pet').value,
+        telefone_dono: document.getElementById('telefone_dono').value,
+        cep_dono: document.getElementById('cep_dono').value,
+        rua_dono: document.getElementById('rua_dono').value,
+        bairro_dono: document.getElementById('bairro_dono').value,
+        cidade_dono: document.getElementById('cidade_dono').value,
+        uf_dono: document.getElementById('uf_dono').value
+    };
+    
+    try {const resposta = await fetch ('https://petshop-servidor.onrender.com/pets', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(novoPet)
+    })
+
+    const dados = await resposta.json();
+    alert('Pet cadastrado com sucesso!');
+    formulario.reset();
+    } catch(erro) {
+        alert ("Erro ao cadastrar o pet. Tente novamente");
+    } 
+}); 
 
 
 
