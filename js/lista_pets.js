@@ -23,7 +23,7 @@ async function carregarPets() {
 }
 carregarPets();
 
-async function excluirPets (id) {
+async function excluirPet (id) {
     const confirmou = confirm ('Tem certeza que deseja excluir este pet?');
     if (!confirmou) {
         return;
