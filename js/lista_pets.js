@@ -21,3 +21,14 @@ async function carregarPets() {
     
 }
 carregarPets();
+
+async function excluirPets (id) {
+    const confirmou = confirm ('Tem certeza que deseja excluir este pet?');
+    if (!confirmou) {
+        return;
+    } 
+   
+    await fetch (`${ENDERECO_BACKEND}/pets/${id}`, {method: 'DELETE'});
+
+    carregarPets();
+}
