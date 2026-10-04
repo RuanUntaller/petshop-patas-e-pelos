@@ -15,6 +15,7 @@ async function carregarPets() {
             <td>${pets[i].raca_pet}</td>
             <td>${pets[i].dono_pet}</td>
             <td>${pets[i].cidade_dono}/${pets[i].uf_dono}</td>
+            <td><button onclick="editarPet('${pets[i]._id}')">Editar</button></td>
             <td><button onclick="excluirPet('${pets[i]._id}')">Excluir</button></td>
         </tr>
         `;
@@ -32,4 +33,8 @@ async function excluirPet (id) {
     await fetch (`${ENDERECO_BACKEND}/pets/${id}`, {method: 'DELETE'});
 
     carregarPets();
+} 
+
+function editarPet (id) {
+    window.location.href = `cadastro_pet.html?id=${id}`;
 }
