@@ -1,3 +1,6 @@
+const ENDERECO_BACKEND = 'https://petshop-servidor.onrender.com';
+let idEmEdicao = null;
+
 function validarTelefone(event){
     let telefone_dono = document.getElementById ('telefone_dono').value;
     event.preventDefault();
@@ -91,6 +94,36 @@ async function carregarEstados(){
 }
 carregarEstados()
 
+async function verificarModoEdicao() {
+    const parametros = new URLSearchParams(window.location.search);
+    const id = parametros.get('id');
+
+    if (id === null) {
+        return;
+    }
+
+    idEmEdicao = id;
+
+    const resposta = await fetch(`${ENDERECO_BACKEND}/pets/${id}`);
+    const pet = await resposta.json();
+
+    document.getElementById('nome_pet').value = pet.nome_pet;
+    document.getElementById('especie_pet').value = pet.especie_pet;
+    document.getElementById('raca_pet').value = pet.raca_pet;
+    document.getElementById('dono_pet').value = pet.dono_pet;
+    document.getElementById('telefone_dono').value = pet.telefone_dono;
+    document.getElementById('cep_dono').value = pet.cep_dono;
+    document.getElementById('rua_dono').value = pet.rua_dono;
+    document.getElementById('bairro_dono').value = pet.bairro_dono;
+    document.getElementById('cidade_dono').value = pet.cidade_dono;
+    document.getElementById('uf_dono').value = pet.uf_dono;
+
+    document.querySelector('button[type="submit"]').textContent = 'Salvar alterações';
+}
+
+verificarModoEdicao();
+
+
 
 document.getElementById('select_cidade_dono').addEventListener('change', function() {
 
@@ -103,6 +136,14 @@ document.getElementById('select_cidade_dono').addEventListener('change', functio
 const formulario = document.getElementById("form_cadastro_pet");
 formulario.addEventListener('submit', async function (evento) {
     evento.preventDefault()
+
+    let url = `${ENDERECO_BACKEND}/pets`;
+    let metodo = 'POST';
+
+    if (idEmEdicao !== null) {
+        url = `${ENDERECO_BACKEND}/pets/${idEmEdicao}`;
+        metodo = 'PUT';
+    }
 
     const novoPet = {
         nome_pet: document.getElementById('nome_pet').value,
@@ -117,18 +158,19 @@ formulario.addEventListener('submit', async function (evento) {
         uf_dono: document.getElementById('uf_dono').value
     };
     
-    try {const resposta = await fetch ('https://petshop-servidor.onrender.com/pets', {
-        method: 'POST',
+    try {const resposta = await fetch (url, {
+        method: metodo,
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(novoPet)
+
     })
 
     const dados = await resposta.json();
-    alert('Pet cadastrado com sucesso!');
-    formulario.reset();
+    alert(idEmEdicao !== null ? 'Pet atualizado com sucesso!' : 'Pet cadastrado com sucesso!');
+    window.location.href = 'lista_pets.html';
     } catch(erro) {
-        alert ("Erro ao cadastrar o pet. Tente novamente");
-    } 
+    alert ("Erro ao cadastrar o pet. Tente novamente");
+}
 }); 
 
 
