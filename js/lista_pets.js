@@ -36,5 +36,5 @@ async function excluirPet (id) {
 } 
 
 function editarPet (id) {
-    window.location.href = `cadastro_pet.html?id=${id}`;
+    window.location.href = `cadastroPet.html?id=${id}`;
 }
