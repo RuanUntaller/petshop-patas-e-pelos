@@ -166,6 +166,10 @@ formulario.addEventListener('submit', async function (evento) {
     })
 
     const dados = await resposta.json();
+    if (!resposta.ok) {
+        alert('Não foi possível salvar: ' + dados.mensagem);
+        return;        
+    }
     alert(idEmEdicao !== null ? 'Pet atualizado com sucesso!' : 'Pet cadastrado com sucesso!');
     window.location.href = 'lista_pets.html';
     } catch(erro) {
