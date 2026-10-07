@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Serviço</title>
+</head>
+<body>
+    <h1>Agendar Serviço</h1>
+
+    <form id="form_agendamento">
+        
+        <label>Pet:</label><br>
+        <select id="pet_id"></select><br>
+
+        <label>Serviço:</label><br>
+        <select id="servico">
+            <option value="Banho">Banho</option>
+            <option value="Tosa">Tosa</option>
+            <option value="Consulta">Consulta</option>
+        </select><br>
+
+        <label>Data:</label><br>
+        <input type="date" id="data"><br>
+
+        <label>Hora:</label><br>
+        <input type="time" id="hora"><br>
+
+
+        <label>Observações:</label><br>
+        <input type="text" id="observacoes"><br>
+
+        <button type="submit">Agendar</button>
+
+    </form>
+
+    <script src="../js/agendar.js"></script>
+</body>
+</html>
