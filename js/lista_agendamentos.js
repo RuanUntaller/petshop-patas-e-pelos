@@ -1,0 +1,34 @@
+const ENDERECO_BACKEND = 'https://petshop-servidor.onrender.com';
+
+async function carregarAgendamentos() { const tabela = document.getElementById('tabela_agendamentos'); tabela.innerHTML = '';
+    const resposta = await fetch(`${ENDERECO_BACKEND}/agendamentos`);
+    const agendamentos = await resposta.json();
+
+    for (let i = 0; i < agendamentos.length; i++) {
+    tabela.innerHTML += `
+    <tr>
+    <td>${agendamentos[i].data}</td>
+    <td>${agendamentos[i].hora}</td>
+    <td>${agendamentos[i].nome_pet}</td>
+    <td>${agendamentos[i].servico}</td>
+    <td>${agendamentos[i].observacoes}</td>
+    <td><button onclick="excluirAgendamento('${agendamentos[i]._id}')">Excluir</button></td>
+    </tr>
+    `;
+    }
+}
+
+async function excluirAgendamento(id) {
+    const confirmou = confirm ("Excluir este agendamento?")
+    
+    if (!confirmou) {
+        return;    
+    } 
+    await fetch (`${ENDERECO_BACKEND}/agendamentos/${id}`, {
+        method: 'DELETE'
+    });
+    
+    carregarAgendamentos();
+}
+
+carregarAgendamentos();
