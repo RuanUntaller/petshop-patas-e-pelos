@@ -12,8 +12,12 @@ async function carregarAgendamentos() { const tabela = document.getElementById('
     <td>${agendamentos[i].nome_pet}</td>
     <td>${agendamentos[i].servico}</td>
     <td>${agendamentos[i].observacoes}</td>
-    <td><button onclick="excluirAgendamento('${agendamentos[i]._id}')">Excluir</button></td>
-    </tr>
+    
+    <td>
+    <button onclick="editarAgendamento('${agendamentos[i]._id}')">Editar</button>
+    <button onclick="excluirAgendamento('${agendamentos[i]._id}')">Excluir</button>
+    </td>    
+   </tr>
     `;
     }
 }
@@ -29,6 +33,10 @@ async function excluirAgendamento(id) {
     });
     
     carregarAgendamentos();
+}
+
+function editarAgendamento(id) {
+    window.location.href = `agendar.html?id=${id}`;
 }
 
 carregarAgendamentos();
