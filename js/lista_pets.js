@@ -24,6 +24,17 @@ async function carregarPets() {
 }
 carregarPets();
 
+const campoBuscaPets = document.querySelector('input[type="text"]');
+campoBuscaPets.addEventListener('input', function () {
+    const busca = campoBuscaPets.value.toLowerCase();
+    const linhas = document.getElementById('tabela_pets').rows;
+
+    for (let i = 0; i < linhas.length; i++) {
+        const nomePet = linhas[i].cells[0].textContent.toLowerCase();
+        linhas[i].style.display = nomePet.includes(busca) ? '' : 'none';
+    }
+});
+
 async function excluirPet (id) {
     const confirmou = confirm ('Tem certeza que deseja excluir este pet?');
     if (!confirmou) {

@@ -16,7 +16,7 @@ Preencha uma linha por aula. "% antes" e "% depois" vem do painel Credits do Cop
 
 | 13.1 |    -    |    0.4%  |     1   |  O copilot identificou e explicou as rotas corretamente
 | 13.2 |   0.4%  |    0.6%  |     1   |  O Copilot explicou corretamente as funções e a ordem de execução.
-| 13.3 |         |          |         |
+| 13.3 |   0.6%  |          |         |
 | 13.4 |         |          |         |
 | 13.5 |         |          |         |
 | 
