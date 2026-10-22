@@ -41,7 +41,12 @@ async function excluirPet (id) {
         return;
     } 
    
-    await fetch (`${ENDERECO_BACKEND}/pets/${id}`, {method: 'DELETE'});
+    const resposta = await fetch (`${ENDERECO_BACKEND}/pets/${id}`, {method: 'DELETE'});
+    const resultado = await resposta.json();
+    if (!resposta.ok) {
+        alert(resultado.mensagem);
+        return;
+    }
 
     carregarPets();
 } 
