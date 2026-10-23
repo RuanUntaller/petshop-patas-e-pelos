@@ -15,6 +15,7 @@ async function carregarPets() {
             <td>${pets[i].raca_pet}</td>
             <td>${pets[i].dono_pet}</td>
             <td>${pets[i].cidade_dono}/${pets[i].uf_dono}</td>
+            <td>${pets[i].agendamentos_count ?? 0}</td>
             <td><button onclick="editarPet('${pets[i]._id}')">Editar</button></td>
             <td><button onclick="excluirPet('${pets[i]._id}')">Excluir</button></td>
         </tr>
