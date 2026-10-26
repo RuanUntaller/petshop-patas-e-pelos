@@ -42,4 +42,14 @@ Uma coisa que a IA errou e eu peguei:
 Não identifiquei erros no código durante os testes.
 
 ---
-EOF
+
+MÓdulo 14
+
+Decisão de Produto (Rotas):
+
+Rotas Públicas: GET /pets e GET /agendamentos (qualquer visitante pode visualizar os animais e serviços).
+
+Rotas Protegidas: POST, PUT e DELETE de pets, agendamentos e usuários (exigem token de autenticação válido para que apenas funcionários alterem os dados).
+
+Aula	% antes	% depois	Pedidos 	Observação
+14.1	2.3%	2.3%	       0	    Decisão de produto registrada e instruções de autenticação atualizadas.
