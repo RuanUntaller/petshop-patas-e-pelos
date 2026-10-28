@@ -53,4 +53,5 @@ Rotas Protegidas: POST, PUT e DELETE de pets, agendamentos e usuários (exigem t
 
 Aula	% antes	 % depois  	Pedidos 	Observação
 14.1	  2.3%	   2.3%	       0	    Decisão de produto registrada e instruções de autenticação atualizadas.
-14.2	  2.3%	   3.2	       2	    Fiz 2 pedios, enviei um incorreto sem querer, nao sei se conta como 2 pedidos. O Copilot pediu autorização antes de instalar o bcrypt. Os três testes da API passaram, e a Atlas confirmou que a senha foi salva como senha_hash, sem armazenar a senha em texto puro.
+14.2	  2.3%	   3.2%	       2	    Fiz 2 pedios, enviei um incorreto sem querer, nao sei se conta como 2 pedidos. O Copilot pediu autorização antes de instalar o bcrypt. Os três testes da API passaram, e a Atlas confirmou que a senha foi salva como senha_hash, sem armazenar a senha em texto puro.
+14.3	  3.2%	   4.1%	       1	    Implementação do login com JWT concluída. Os testes locais e no Render retornaram os resultados esperados, e o token contém os dados do usuário e a validade.
