@@ -60,9 +60,13 @@ formulario.addEventListener('submit', async function(evento) {
             }
             const resposta = await fetch(url, {
                 method: metodo,
-                headers: { 'Content-Type': 'application/json' },
+                headers: cabecalhosComToken(),
                 body: JSON.stringify(novoAgendamento)
             });
+
+        if (tratarNaoAutorizado(resposta)) {
+            return;
+        }
 
         const dados = await resposta.json();
 
@@ -85,4 +89,3 @@ async function iniciarPagina() {
 }
 
 iniciarPagina();
-

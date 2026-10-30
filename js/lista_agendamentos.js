@@ -52,9 +52,13 @@ async function excluirAgendamento(id) {
     if (!confirmou) {
         return;    
     } 
-    await fetch (`${ENDERECO_BACKEND}/agendamentos/${id}`, {
-        method: 'DELETE'
+    const resposta = await fetch (`${ENDERECO_BACKEND}/agendamentos/${id}`, {
+        method: 'DELETE',
+        headers: cabecalhosComToken()
     });
+    if (tratarNaoAutorizado(resposta)) {
+        return;
+    }
     
     carregarAgendamentos();
 }

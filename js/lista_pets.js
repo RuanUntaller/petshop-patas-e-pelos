@@ -42,7 +42,14 @@ async function excluirPet (id) {
         return;
     } 
    
-    const resposta = await fetch (`${ENDERECO_BACKEND}/pets/${id}`, {method: 'DELETE'});
+    const resposta = await fetch (`${ENDERECO_BACKEND}/pets/${id}`, {
+        method: 'DELETE',
+        headers: cabecalhosComToken()
+    });
+    if (tratarNaoAutorizado(resposta)) {
+        return;
+    }
+
     const resultado = await resposta.json();
     if (!resposta.ok) {
         alert(resultado.mensagem);

@@ -160,10 +160,14 @@ formulario.addEventListener('submit', async function (evento) {
     
     try {const resposta = await fetch (url, {
         method: metodo,
-        headers: {'Content-Type': 'application/json'},
+        headers: cabecalhosComToken(),
         body: JSON.stringify(novoPet)
 
     })
+
+    if (tratarNaoAutorizado(resposta)) {
+        return;
+    }
 
     const dados = await resposta.json();
     if (!resposta.ok) {
