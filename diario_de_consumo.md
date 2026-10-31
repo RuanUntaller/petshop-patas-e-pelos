@@ -56,3 +56,4 @@ Aula	% antes	 % depois  	Pedidos 	Observação
 14.2	  2.3%	   3.2%	       2	    Fiz 2 pedios, enviei um incorreto sem querer, nao sei se conta como 2 pedidos. O Copilot pediu autorização antes de instalar o bcrypt. Os três testes da API passaram, e a Atlas confirmou que a senha foi salva como senha_hash, sem armazenar a senha em texto puro.
 14.3	  3.2%	   4.1%	       1	    Implementação do login com JWT concluída. Os testes locais e no Render retornaram os resultados esperados, e o token contém os dados do usuário e a validade.
 14.4	  4.1%	   6.9%	       2	    Login e autenticação no frontend concluídos. Testes de cadastro, edição, exclusão, logout e bloqueio sem login realizados com sucesso. Token JWT confirmado no Network.
+14.5	  6.9%	    8%	       1	    Auditoria de segurança concluída com 12 itens conferidos. Comparei minha análise com a do Copilot, realizei os testes de segurança e registrei os resultados no AUDITORIA.md. Relatório enviado ao GitHub.
